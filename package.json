@@ -2,7 +2,7 @@
     "name": "simple-node",
     "version": "1.0.0",
     "description": "Simple Node.js app for ECS",
-    "main": "app.js",
+    "main": "server.js",  // <-- FIX: Match actual entry file
     "scripts": {
       "start": "node server.js"
     },
@@ -11,5 +11,4 @@
     },
     "author": "",
     "license": "ISC"
-  }
-  
+}
