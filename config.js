@@ -2,11 +2,11 @@
 const { SSMClient, GetParameterCommand } = require("@aws-sdk/client-ssm");
 
 const ssmClient = new SSMClient({ region: process.env.AWS_REGION || 'us-east-1' });
-// Export the function directly
+
 module.exports.getParam = async (name) => {
   try {
     const command = new GetParameterCommand({ Name: name });
-    const response = await ssm.send(command);
+    const response = await ssmClient.send(command); // Use ssmClient, not ssm
     return response.Parameter.Value;
   } catch (err) {
     console.error("Error fetching parameter:", err);
@@ -14,5 +14,4 @@ module.exports.getParam = async (name) => {
   }
 };
 
-// Export parameter names for reference
-module.exports.WELCOME_MESSAGE = "WELCOME_MESSAGE"
+module.exports.WELCOME_MESSAGE = "WELCOME_MESSAGE";
