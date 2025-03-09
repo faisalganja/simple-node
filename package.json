@@ -2,12 +2,13 @@
     "name": "simple-node",
     "version": "1.0.0",
     "description": "Simple Node.js app for ECS",
-    "main": "server.js",  
+    "main": "server.js",
     "scripts": {
-      "start": "node server.js"
+        "start": "node server.js"
     },
     "dependencies": {
-      "express": "^4.17.1"
+        "@aws-sdk/client-ssm": "^3.759.0",
+        "express": "^4.17.1"
     },
     "author": "",
     "license": "ISC"

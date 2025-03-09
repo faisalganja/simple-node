@@ -1,13 +1,19 @@
 // server.js
 const http = require('http');
+const config = require('./config');
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World from Node.js!\n');
-});
+// Fetch parameters ONCE at startup
+(async () => {
+  const welcomeMessage = await config.getParam(config.WELCOME_MESSAGE);
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-}); // <-- Add this missing closing bracket
+  const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(`${welcomeMessage}\n`);
+  });
+
+  const PORT = 3000;
+  server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+  });
+})();

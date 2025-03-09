@@ -1,19 +1,16 @@
-# Use a specific Node.js LTS version with Alpine Linux for smaller image size
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files first to leverage Docker layer caching
+# Copy package files
 COPY package*.json ./
 
-# Install dependencies (add --production flag)
+# Install dependencies including AWS SDK
 RUN npm install --production
 
-# Copy application code
-COPY . .
+# Copy config and application code
+COPY config.js ./
+COPY server.js ./
 
-# Expose port and start app
 EXPOSE 3000
 CMD ["node", "server.js"]
-
