@@ -1,8 +1,7 @@
 // config.js
 const { SSMClient, GetParameterCommand } = require("@aws-sdk/client-ssm");
 
-const ssm = new SSMClient({ region: process.env.AWS_REGION });
-
+const ssmClient = new SSMClient({ region: process.env.AWS_REGION || 'us-east-1' });
 // Export the function directly
 module.exports.getParam = async (name) => {
   try {
