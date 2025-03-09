@@ -1,0 +1,15 @@
+{
+    "name": "simple-node",
+    "version": "1.0.0",
+    "description": "Simple Node.js app for ECS",
+    "main": "app.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
